@@ -56,7 +56,7 @@ function openForm(service){
 }
 
 // ===========================
-// Contact Form
+// Contact Form → WhatsApp
 // ===========================
 
 const form = document.querySelector(".contact-form");
@@ -67,7 +67,22 @@ form.addEventListener("submit",function(e){
 
     e.preventDefault();
 
-    alert("Thank You! We will contact you soon.");
+    const name = document.querySelector('input[placeholder="Your Name"]').value;
+    const mobile = document.querySelector('input[placeholder="Mobile Number"]').value;
+    const service = document.querySelector("select").value;
+    const message = document.querySelector("textarea").value;
+
+    const text =
+`*New Inquiry - Rajkumar Online Work*
+
+👤 Name: ${name}
+📞 Mobile: ${mobile}
+🛠️ Service: ${service}
+💬 Message: ${message}`;
+
+    const url = "https://wa.me/919429193151?text=" + encodeURIComponent(text);
+
+    window.open(url, "_blank");
 
 });
 
